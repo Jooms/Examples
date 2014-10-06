@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">CourseManager</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="create_action">Create Course</string>
+    <string name="catalog_hint">Catalog Number (ex: CSCI 430)</string>
+    <string name="title_hint">Course Title</string>
+
+</resources>

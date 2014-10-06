@@ -1,0 +1,62 @@
+package com.example.coursemanager;
+
+import java.util.ArrayList;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.*;
+
+
+public class MainActivity extends Activity 
+{
+	private Button buttonCreate;
+	private EditText name;
+	private EditText catalogID;
+	private NumberPicker capacity;
+	private ArrayList <Course> catalog;
+	
+	public enum DayOfWeek
+	{
+		SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY
+	}
+	
+	private class Course
+	{
+		protected String title;
+		protected String catalogID;
+		protected int seats;
+	}
+	
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) 
+    {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        
+        catalog = new ArrayList <Course>();
+        name = (EditText) findViewById(R.id.editName);
+        catalogID = (EditText) findViewById(R.id.editNumber);
+        capacity = (NumberPicker) findViewById(R.id.numPickCapacity);
+        
+        /*button = (Button) findViewById(R.id.buttonCreate);
+        button.setOnClickListener(new View.OnClickListener() 
+        {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				
+			}
+		});*/
+    }
+    
+    public void buttonCreatePressed(View view)
+    {
+    	System.out.println("Button was pressed!");
+    	s
+    }
+}
