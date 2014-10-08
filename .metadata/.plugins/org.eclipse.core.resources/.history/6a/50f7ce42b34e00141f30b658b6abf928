@@ -1,0 +1,26 @@
+package com.example.roundtipper;
+
+import static org.junit.Assert.*;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class TipModelTest {
+
+	private TipModel tipper;
+	
+	@Before
+	public void setUp()
+	{
+		tipper = new TipModel();
+	}
+	
+	@Test
+	public void testRoundTipUp() {
+		tipper.setSubtotal(10.00); //tip is $2
+		assertEquals(0.2, tipper.getTipRate(), 0.001);
+		assertEquals(12.00, tipper.getBillTotal(), 0.001);
+		assertEquals(2.00, tipper.getTipAmount(), 0.001);
+	}
+
+}

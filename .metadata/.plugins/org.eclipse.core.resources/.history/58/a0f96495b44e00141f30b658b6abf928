@@ -1,0 +1,40 @@
+package com.example.roundtipper;
+
+import java.util.Observable;
+import java.util.Observer;
+
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+
+public class MainActivity extends Activity implements Observer
+{
+	Button calc;
+	EditText subtotal;
+	TextView rate;
+	TextView tip;
+	TextView total;
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        calc = (Button) findViewById(R.id.buttonCalc);
+        subtotal = (EditText) findViewById(R.id.subtotalField);
+        rate = (TextView) findViewById(R.id.textRate);
+        tip = (TextView) findViewById(R.id.textTip);
+        total = (TextView) findViewById(R.id.textTotal);
+    }
+
+	@Override
+	public void update(Observable observable, Object data) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

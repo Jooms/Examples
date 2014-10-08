@@ -1,0 +1,107 @@
+package com.example.roundtipper;
+
+import java.util.Observable;
+
+//-------------------------------------------------------------------------
+/**
+ *
+ */
+public class TipModel extends Observable
+{
+    //~ Fields ................................................................
+
+    private double billSubtotal;
+    private double tipRate;
+    private double tipAmount;
+    private double billTotal;
+    
+    private final static double TARGET_RATE = 0.20;
+
+    //~ Public methods ........................................................
+
+    // ----------------------------------------------------------
+    /**
+     * Gets the amount of the bill, before the tip (the subtotal).
+     *
+     * @return the amount of the bill, before the tip
+     */
+    public double getBillAmount()
+    {
+        return billSubtotal;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Sets the amount of the bill, before the tip.
+     *
+     * @param newBillAmount the new amount of the bill before the tip
+     */
+    public void setSubtotal(double newBillAmount)
+    {
+        billSubtotal = newBillAmount;
+        calcRoundTip();
+    }
+
+    private void calcRoundTip()
+    {
+    		double targetTip = billSubtotal * TARGET_RATE;
+    		
+    		double targetTotal = targetTip + billSubtotal;
+    		
+    		int cents = ((int) targetTotal*100) % 100;
+    		
+    		if( cents == 0 )
+    		{
+    			tipRate = TARGET_RATE;
+    			tipAmount = targetTip;
+    			billTotal = targetTotal;
+    		}
+    		else if( cents >= 50 )
+    		{
+    			billTotal = targetTotal + (cents/100.0);
+    			tipAmount = billTotal - billSubtotal;
+    			tipRate = 
+    		}
+    		else
+    		{
+    			
+    		}
+    }
+    // ----------------------------------------------------------
+    /**
+     * Gets the tip rate, represented as a floating point value (for example,
+     * a 15% tip would be 0.15).
+     *
+     * @return the tip rate
+     */
+    public float getTipRate()
+    {
+        return tipRate;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Gets the absolute amount of the tip by itself, calculated by multiplying
+     * the bill subtotal and the tip rate.
+     *
+     * @return the absolute amount of the tip by itself
+     */
+    public float getTipAmount()
+    {
+        return billAmount * tipRate;
+    }
+
+
+    // ----------------------------------------------------------
+    /**
+     * Gets the total amount of the bill, including the tip.
+     *
+     * @return the total amount of the bill, including the tip
+     */
+    public float getBillTotal()
+    {
+        return billAmount + getTipAmount();
+    }
+}

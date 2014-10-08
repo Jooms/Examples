@@ -1,0 +1,22 @@
+package com.example.roundtipper;
+
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+public class TipModelTest {
+
+	private TipModel tipper;
+	
+	@Before
+	public void setUp()
+	{
+		tipper = new TipModel();
+	}
+	
+	@Test
+	public void testRoundTipUp() {
+		fail("Not yet implemented");
+	}
+
+}

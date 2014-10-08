@@ -1,0 +1,5 @@
+package com.example.coursemanager;
+
+public class Course {
+
+}
