@@ -15,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 
-public class MainActivity extends Activity
+public class MainActivity extends Activity implements Observer
 {
 	private Button calc;
 	private EditText subtotal;
@@ -38,6 +38,7 @@ public class MainActivity extends Activity
         total = (TextView) findViewById(R.id.textTotal);
         
         tipCalc = new TipModel();
+        tipCalc.addObserver(this); // observes for calculation to be complete
     }
     
     /**
@@ -51,10 +52,8 @@ public class MainActivity extends Activity
     		{
     			tipCalc.setSubtotal(
     					  Double.parseDouble( subtotal.getText().toString() )
-    					); 
-    			tip.setText( doubleToCurrency(tipCalc.getTipAmount()) );
-    			rate.setText( (int) Math.floor(tipCalc.getTipRate()*100) + "%" );
-    			total.setText( doubleToCurrency(tipCalc.getBillTotal()) );
+    					);  
+    			
     		}
     }
 
@@ -70,4 +69,11 @@ public class MainActivity extends Activity
     		formatting.setRoundingMode(RoundingMode.FLOOR);
     		return "$ " + formatting.format(amount);
     }
+
+	@Override
+	public void update(Observable observable, Object data) {
+		tip.setText( doubleToCurrency(tipCalc.getTipAmount()) );
+		rate.setText( (int) Math.floor(tipCalc.getTipRate()*100) + "%" );
+		total.setText( doubleToCurrency(tipCalc.getBillTotal()) );
+	}
 }
