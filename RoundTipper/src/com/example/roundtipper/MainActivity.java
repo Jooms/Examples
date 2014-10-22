@@ -23,6 +23,7 @@ public class MainActivity extends Activity implements Observer
 	private TextView tip;
 	private TextView total;
 	private TipModel tipCalc;
+	private TipHistoryModel history;
 	
 	/**
 	 * Initiates widget bindings when activity is created
@@ -39,6 +40,8 @@ public class MainActivity extends Activity implements Observer
         
         tipCalc = new TipModel();
         tipCalc.addObserver(this); // observes for calculation to be complete
+        
+        history = new TipHistoryModel();
     }
     
     /**
@@ -75,5 +78,12 @@ public class MainActivity extends Activity implements Observer
 		tip.setText( doubleToCurrency(tipCalc.getTipAmount()) );
 		rate.setText( (int) Math.floor(tipCalc.getTipRate()*100) + "%" );
 		total.setText( doubleToCurrency(tipCalc.getBillTotal()) );
+		
+		try {
+			history.recordHistory(tipCalc.getTipRate(), tipCalc.getTipAmount(), tipCalc.getBillTotal());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
