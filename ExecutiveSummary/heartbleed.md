@@ -4,7 +4,9 @@ Heartbleed
 
 Executive Summary I
 -------------------
-Together, as a team, the four of us have looked into the impact of the Heartbleed vulnerability on our systems. Heartbleed is a vulnerability caused by poorly written security code in OpenSSL (a highly used security library). It leaks information to the attacker. We have patched our servers so that they are no longer vulnerable. We now use LibreSSL instead of OpenSSL, which has none of the vulnerabilities.
+Together our security team has looked into the impact of the Heartbleed vulnerability. This vulnerability, which allows an attacker to gain access to vital system information, is caused by a bug in OpenSSL. We heavily use OpenSSL across many of our systems for secure authentication, so it is with utmost importance that we fix this issue.
+
+Since then we have updated our servers to use LibreSSL instead of OpenSSL. This simple update removes all vulnerabilities related to Heartbleed and allows us to continue running securely. We will monitor the fallout from this vulnerability and continue to provide updates.
 
 Executive Summary II
 --------------------
